@@ -10,13 +10,16 @@
   %body
     .header
       .header-title
-        = link_to "#" do
+        = link_to "/" do
           Taskn
       %ul.header-link
         %li.header-link__left
           = link_to "#" do
+            リスト追加
+        %li.header-link__left
+          = link_to new_user_registration_path do
             ユーザー登録
         %li.header-link__right
-          = link_to "#" do
+          = link_to new_user_session_path do
             ログイン
     = yield
