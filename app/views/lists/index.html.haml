@@ -6,6 +6,8 @@
           .card-text.d-inline-block
             = list.title
             .dropdown.float-right
+              = link_to new_list_card_path(list.id) do
+                %i.far.fa-plus-square.mr-3
               = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
                 %i.fas.fa-ellipsis-v
                 .dropdown-menu
@@ -17,12 +19,8 @@
             = link_to "#" do
               作成者: 
               = list.user.name
-          .card.mt-2.shadow-sm.dropdown
-            = link_to "#" do
+          - list.cards.each do |card|
+            .card.mt-2.shadow-sm.dropdown
               .card-header
-                アプリ開発
-          .card.mt-2.shadow-sm.dropdown
-            = link_to "#" do
-              .card-header
-                アプリ開発2
+                = card.memo
       

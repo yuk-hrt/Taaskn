@@ -4,6 +4,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    @cards = Card.all
   end
 
   def new
@@ -40,7 +41,7 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title).merge(user_id: current_user.id)
+    params.require(:list).permit(:title, :user_id).merge(user_id: current_user.id)
   end
 
   def set_list
