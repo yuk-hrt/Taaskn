@@ -1,9 +1,9 @@
 .form-container
-  %h2 リストの追加
+  %h2 リストの編集
   = form_with model: @list, local: true do |f|
     .field.form-group
       = f.label :title
       %br/
       = f.text_field :title, class:"form-control"
     .actions
-      = f.submit "追加", class:"btn btn-primary"
+      = f.submit "編集", class:"btn btn-primary"
