@@ -1,3 +1,6 @@
+%nav.navbar.navbar-light.bg-light
+  %span.navbar-brand.mb-0.h1
+    = @user.name
 .container-fluid
   .row
     - @lists.each do |list|
@@ -16,10 +19,6 @@
                     リスト編集
                   = link_to list_path(list.id), method: :delete, class:"dropdown-item" do
                     リスト削除
-          .small.text-muted
-            = link_to user_path(list.user.id) do
-              作成者: 
-              = list.user.name
           - list.cards.each do |card|
             .card.mt-2.shadow-sm.dropdown
               = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
@@ -28,4 +27,3 @@
                 .dropdown-menu
                   = link_to list_card_path(list_id: list, id: card.id), method: :delete, class:"dropdown-item" do
                     カード削除
-      

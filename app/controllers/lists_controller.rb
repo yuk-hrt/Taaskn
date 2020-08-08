@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
 
-  before_action :set_list, only: [:edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @lists = List.all.order("created_at DESC")
     @cards = Card.all
   end
 
@@ -18,6 +18,9 @@ class ListsController < ApplicationController
     else 
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
