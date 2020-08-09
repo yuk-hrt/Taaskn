@@ -1,9 +1,10 @@
 class ListsController < ApplicationController
 
-  before_action :set_list, only: [:edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @lists = List.all.order("created_at DESC")
+    @cards = Card.all
   end
 
   def new
@@ -17,6 +18,9 @@ class ListsController < ApplicationController
     else 
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -40,7 +44,7 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title).merge(user_id: current_user.id)
+    params.require(:list).permit(:title, :user_id).merge(user_id: current_user.id)
   end
 
   def set_list
