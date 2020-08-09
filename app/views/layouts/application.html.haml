@@ -13,16 +13,18 @@
         = link_to "/" do
           Taskn
       %ul.header-link
-        %li.header-link__left
-          = link_to new_list_path do
-            リスト追加
-        %li.header-link__left
-          = link_to new_user_registration_path do
-            ユーザー登録
-        %li.header-link__left
-          = link_to new_user_session_path do
-            ログイン
-        %li.header-link__right
-          = link_to destroy_user_session_path, method: :delete do
-            ログアウト
+        - if user_signed_in?
+          %li.header-link__left
+            = link_to new_list_path do
+              リスト追加
+          %li.header-link__right
+            = link_to destroy_user_session_path, method: :delete do
+              ログアウト
+        - else
+          %li.header-link__left
+            = link_to new_user_registration_path do
+              ユーザー登録
+          %li.header-link__right
+            = link_to new_user_session_path do
+              ログイン
     = yield

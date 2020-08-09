@@ -1,0 +1,13 @@
+.container
+  .card.p-3.mt-3.shadow-none.bg-light
+    .card-text.d-inline-block
+      = @list.title
+      %ul#sortable.connectedSortable
+        - @list.cards.each do |card|
+          %li.card.mt-2.shadow-sm.dropdown.ui-state-default
+            = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+              .card-header
+                = card.memo
+              .dropdown-menu
+                = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
+                  カード削除

@@ -9,21 +9,27 @@
           .card-text.d-inline-block
             = link_to "#" do
               = list.title
-            .dropdown.float-right
-              = link_to new_list_card_path(list.id) do
-                %i.far.fa-plus-square.mr-3
-              = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
-                %i.fas.fa-ellipsis-v
-                .dropdown-menu
-                  = link_to edit_list_path(list.id), class:"dropdown-item" do
-                    リスト編集
-                  = link_to list_path(list.id), method: :delete, class:"dropdown-item" do
-                    リスト削除
-          - list.cards.each do |card|
-            .card.mt-2.shadow-sm.dropdown
-              = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
-                .card-header
-                  = card.memo
-                .dropdown-menu
-                  = link_to list_card_path(list_id: list, id: card.id), method: :delete, class:"dropdown-item" do
-                    カード削除
+            - if user_signed_in? && current_user.id == list.user_id
+              .dropdown.float-right
+                = link_to new_list_card_path(list.id) do
+                  %i.far.fa-plus-square.mr-3
+                = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+                  %i.fas.fa-ellipsis-v
+                  .dropdown-menu
+                    = link_to edit_list_path(list.id), class:"dropdown-item" do
+                      リスト編集
+                    = link_to list_path(list.id), method: :delete, class:"dropdown-item" do
+                      リスト削除
+          %ul#sortable.connectedSortable
+            - list.cards.each do |card|
+              %li.card.mt-2.shadow-sm.dropdown.ui-state-default
+                - if user_signed_in? && current_user.id == list.user_id
+                  = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+                    .card-header
+                      = card.memo
+                    .dropdown-menu
+                      = link_to list_card_path(list_id: list, id: card.id), method: :delete, class:"dropdown-item" do
+                        カード削除
+                - else
+                  .card-header
+                    = card.memo
