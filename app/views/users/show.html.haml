@@ -20,9 +20,9 @@
                       リスト編集
                     = link_to list_path(list.id), method: :delete, class:"dropdown-item" do
                       リスト削除
-          %ul#sortable.connectedSortable
+          %ul
             - list.cards.each do |card|
-              %li.card.mt-2.shadow-sm.dropdown.ui-state-default
+              %li.card.mt-2.shadow-sm.dropdown
                 - if user_signed_in? && current_user.id == list.user_id
                   = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
                     .card-header

@@ -4,10 +4,14 @@
       = @list.title
       %ul#sortable.connectedSortable
         - @list.cards.each do |card|
-          %li.card.mt-2.shadow-sm.dropdown.ui-state-default
-            = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+          %li.card.mt-2.shadow-sm.dropdown.ui-state-default.item{data:{ model_name: card.class.name.underscore, update_url: list_card_sort_path(list_id:card.list_id, card_id:card.id) }}
+            - if user_signed_in? && current_user.id == @list.user_id
+              = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+                .card-header
+                  = card.memo
+                .dropdown-menu
+                  = link_to list_card_path(list_id: list, id: card.id), method: :delete, class:"dropdown-item" do
+                    カード削除
+            - else
               .card-header
                 = card.memo
-              .dropdown-menu
-                = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
-                  カード削除

@@ -26,9 +26,15 @@ class CardsController < ApplicationController
     end
   end
 
+  def sort
+    @card = Card.find(params[:card_id])
+    @card.update(card_params)
+    redirect_to root_path
+  end
+
   private
   def card_params
-    params.require(:card).permit(:memo, :list_id)
+    params.require(:card).permit(:memo, :row_order_position)
   end
 
 end

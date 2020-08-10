@@ -3,6 +3,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
     create_table :cards do |t|
       t.string :memo, null: false
       t.references :list, null: false
+      t.integer :row_order
       t.timestamps
     end
   end
