@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'lists#index'
   resources :users
   resources :lists do
-    resources :cards
+    resources :cards do
+      put :sort
+    end
   end
 end
