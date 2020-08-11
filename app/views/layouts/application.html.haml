@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Taskn
+    %title Taaskn
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -11,7 +11,7 @@
     .header
       .header-title
         = link_to "/" do
-          Taskn
+          = image_tag 'logo.png', alt: 'logo', height: '70px', width: '140px'
       %ul.header-link
         - if user_signed_in?
           %li.header-link__left
