@@ -1,9 +1,9 @@
 - if user_signed_in?
   - if list.like_user(current_user.id)
     = link_to list_like_path(list.likes, list_id: list.id), method: "delete", remote: true do
-      %i.far.fa-heart
+      %i.fa.fa-heart
       = list.likes.count
   - else
     = link_to list_likes_path(list.id), method: "post", remote: true do
-      %i.fa.fa-heart
+      %i.far.fa-heart
       = list.likes.count
