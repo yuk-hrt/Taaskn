@@ -7,6 +7,9 @@
             -# = link_to "#", data: {toggle: "modal", target: "#exampleModalCenter"} do
             = link_to list_path(list.id) do
               = list.title
+            .card-text.d-inline-block.ml-1
+              %div{id: "like_#{list.id}"}
+                = render partial: 'likes/like', locals: { list: list }
             -# .modal.fade#exampleModalCenter{tabindex: "-1", role: "dialog", 'aria-labelledby': :"exampleModalCenterTitle", 'aria-hidden': :"true"}
             -#   .modal-dialog.modal-dialog-centered{role: "document"}
             -#     .modal-content

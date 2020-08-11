@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :cards do
       put :sort
     end
+    resources :likes, only: [:create, :destroy]
   end
 end
