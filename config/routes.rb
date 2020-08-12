@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
     resources :likes, only: [:create, :destroy]
   end
+  post 'linebot/bot'
 end
