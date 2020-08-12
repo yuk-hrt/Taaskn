@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @lists = List.includes(:cards).order('created_at DESC')
   end
 
   def new
