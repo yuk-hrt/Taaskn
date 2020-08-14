@@ -26,7 +26,7 @@ class LinebotController < ApplicationController
         # メッセージのタイプがテキストだったら（スタンプ等ではなく）
         case event.type
         when Line::Bot::Event::MessageType::Text
-          # メッセージの文字列を取得して、変数taskに代入
+          # メッセージの文字列を取得して、変数listに代入
           list = event['message']['text']
 
           # DBへの登録処理開始
