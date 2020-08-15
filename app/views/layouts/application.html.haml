@@ -8,12 +8,17 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
+    #page-top
+      %a
     .header
       .header-title
         = link_to "/" do
           = image_tag 'logo.png', alt: 'logo', height: '70px', width: '140px'
       %ul.header-link
         - if user_signed_in?
+          %li.header-link__left
+            = link_to user_path(current_user.id) do
+              マイページ
           %li.header-link__left
             = link_to new_list_path do
               リスト追加

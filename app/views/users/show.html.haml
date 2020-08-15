@@ -1,6 +1,7 @@
-%nav.navbar.navbar-light.bg-light
-  %span.navbar-brand.mb-0.h1
+%nav.navbar.navbar-light.bg-dark
+  %span.navbar-brand.mb-0.h1.text-light
     = @user.name
+    %small さんのタスク
 .container-fluid
   .row
     - @lists.each do |list|

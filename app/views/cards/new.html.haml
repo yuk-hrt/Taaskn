@@ -1,9 +1,7 @@
 .form-container
-  %h2 メモの追加
+  %h2 カードの追加
   = form_with model: [@list, @card], local: true do |f|
     .field.form-group
-      = f.label :memo
-      %br/
       = f.text_field :memo, class:"form-control"
     .actions
       = f.submit "追加", class:"btn btn-primary"
