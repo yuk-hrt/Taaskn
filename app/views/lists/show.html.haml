@@ -5,16 +5,39 @@
       - if user_signed_in? && current_user.id == @list.user_id
         %ul#sortable.connectedSortable
           - @list.cards.each do |card|
-            %li.card.mt-2.shadow-sm.dropdown.ui-state-default.item{data:{ model_name: card.class.name.underscore, update_url: list_card_sort_path(list_id:card.list_id, card_id:card.id) }}
-              = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
-                .card-header
-                  = card.memo
-                .dropdown-menu
-                  = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
-                    カード削除
+            - unless card.done
+              %li.card.mt-2.shadow-sm.dropdown.ui-state-default.item{data:{ item_id: card.id, done_url: list_card_done_path(list_id:card.list_id, card_id:card.id), model_name: card.class.name.underscore, update_url: list_card_sort_path(list_id:card.list_id, card_id:card.id) }}
+                = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+                  .card-header
+                    = card.memo
+                  .dropdown-menu
+                    = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
+                      カード削除
       - else
         %ul
           - @list.cards.each do |card|
-            %li.card.mt-2.shadow-sm.dropdown
-              .card-header
-                = card.memo
+            - unless card.done
+              %li.card.mt-2.shadow-sm.dropdown
+                .card-header
+                  = card.memo
+  .card.p-3.mt-3.shadow-none.bg-dark.done-box
+    .card-text.d-inline-block.text-light
+      完了
+      - if user_signed_in? && current_user.id == @list.user_id
+        %ul.done-cards
+          - @list.cards.each do |card|
+            - if card.done
+              %li.card.mt-2.shadow-sm.dropdown
+                = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
+                  .card-header.text-dark
+                    = card.memo
+                  .dropdown-menu
+                    = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
+                      カード削除
+      - else
+        %ul.done-cards
+          - @list.cards.each do |card|
+            - if card.done
+              %li.card.mt-2.shadow-sm.dropdown
+                .card-header.text-dark
+                  = card.memo

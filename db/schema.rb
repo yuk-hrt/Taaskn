@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_085059) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "memo", null: false
+    t.boolean "done", default: false, null: false
     t.bigint "list_id", null: false
     t.integer "row_order"
     t.datetime "created_at", precision: 6, null: false
