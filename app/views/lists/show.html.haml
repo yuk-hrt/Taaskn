@@ -37,9 +37,9 @@
       .card.p-3.mt-3.shadow-none.bg-dark.done-box
         .card-text.d-inline-block.text-light
           完了リスト
-          %small
-            ※ここにドロップしてください
           - if user_signed_in? && current_user.id == @list.user_id
+            %small
+              ※ここにドロップしてください
             %ul.done-cards
               - @list.cards.each do |card|
                 - if card.done
