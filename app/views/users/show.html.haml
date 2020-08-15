@@ -7,7 +7,7 @@
       .col-xl-3.col-md-4.col-sm-6
         .card.p-3.mt-3.shadow-none.bg-light
           .card-text.d-inline-block
-            = link_to "#" do
+            = link_to list_path(list.id) do
               = list.title
             - if user_signed_in? && current_user.id == list.user_id
               .dropdown.float-right

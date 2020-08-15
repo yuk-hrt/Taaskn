@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :lists do
     resources :cards do
+      post :done
       put :sort
     end
     resources :likes, only: [:create, :destroy]
