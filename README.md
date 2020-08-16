@@ -1,24 +1,24 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Taaskn
+## 概要
+自分のタスクをシェアできます。
+自分好みのタスクを作成していいねをもらいましょう。
+## デプロイ先
+https://taaskn.herokuapp.com/
+## 仕様
+- Ruby
+- Ruby on Rails
+- Bootstrap
+- MySQL
+- Heroku
+## 主な機能
+- ユーザー登録、ログイン、ログアウト
+- リストの作成、編集、削除
+- リストのいいね機能
+- カードの作成、編集、削除
+- カードをドラック＆ドロップで並び替え
+- カードをドラック＆ドロップで完了BOXに移動
+- ロゴは自身で作成
+## 今後実装したい機能
+- LINE BOTを用いてのタスク、カード作成
+- LINEアカウントでのログイン
+- いいねの通知(LINE)
