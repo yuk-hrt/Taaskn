@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_list, only: [:new, :create, :destroy]
   before_action :set_card, only: [:sort, :done]
   
@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   def create
     @card = @list.cards.new(card_params)
     if @card.save
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else 
       render :new
     end

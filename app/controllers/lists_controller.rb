@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show, ]
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else 
       render :new
     end
@@ -23,11 +23,14 @@ class ListsController < ApplicationController
   end
 
   def edit
+    if @list.user != current_user
+      redirect_to root_path
+    end
   end
 
   def update
     if @list.update(list_params)
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else 
       render :edit
     end
@@ -35,7 +38,7 @@ class ListsController < ApplicationController
 
   def destroy
     if @list.destroy
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else
       redirect_to root_path
     end

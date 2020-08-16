@@ -1,9 +1,13 @@
-.form-container
-  %h2 リストの編集
-  = form_with model: @list, local: true do |f|
-    .field.form-group
-      = f.label :title
-      %br/
-      = f.text_field :title, class:"form-control"
-    .actions
-      = f.submit "編集", class:"btn btn-primary"
+.container
+  .form-wrapper.row.justify-content-center
+    .form-container.col-md-6
+      %h2.text-center.font-weight-bold リストの編集
+      = form_with model: @list, local: true do |f|
+        .field.form-group
+          = f.label :リスト名
+          %br/
+          = f.label :title
+          %br/
+          = f.text_field :title, class:"form-control"
+        .actions
+          = f.submit "編集", class:"btn btn-primary"
