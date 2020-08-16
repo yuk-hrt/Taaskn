@@ -1,4 +1,6 @@
 # Taaskn
+<img src="https://github.com/yuk-hrt/Taaskn/blob/master/app/assets/images/logo.png" alt="taaskn" width="300" height="180"/>
+
 ## 概要
 自分のタスクをシェアできます。
 自分好みのタスクを作成していいねをもらいましょう。
