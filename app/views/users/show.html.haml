@@ -1,7 +1,7 @@
 %nav.navbar.navbar-light.bg-dark
   %span.navbar-brand.mb-0.h1.text-light
     = @user.name
-    %small さんのタスク
+    %small さんのリスト
 .container-fluid
   .row
     - @lists.each do |list|
@@ -13,13 +13,15 @@
             - if user_signed_in? && current_user.id == list.user_id
               .dropdown.float-right
                 = link_to new_list_card_path(list.id) do
-                  %i.far.fa-plus-square.mr-3
+                  %i.fas.fa-pencil-alt.mr-2
                 = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
-                  %i.fas.fa-ellipsis-v
+                  %i.fas.fa-ellipsis-h
                   .dropdown-menu
                     = link_to edit_list_path(list.id), class:"dropdown-item" do
+                      %i.far.fa-edit
                       リスト編集
                     = link_to list_path(list.id), method: :delete, class:"dropdown-item" do
+                      %i.far.fa-trash-alt
                       リスト削除
           %ul
             - list.cards.each do |card|
@@ -30,6 +32,7 @@
                       = card.memo
                     .dropdown-menu
                       = link_to list_card_path(list_id: list, id: card.id), method: :delete, class:"dropdown-item" do
+                        %i.far.fa-trash-alt
                         カード削除
                 - else
                   .card-header

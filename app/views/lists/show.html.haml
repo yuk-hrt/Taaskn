@@ -7,13 +7,15 @@
           - if user_signed_in? && current_user.id == @list.user_id
             .dropleft.float-right
               = link_to new_list_card_path(@list.id) do
-                %i.far.fa-plus-square.mr-2
+                %i.fas.fa-pencil-alt.mr-2
               = link_to "#", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false do
                 %i.fas.fa-ellipsis-h
                 .dropdown-menu
                   = link_to edit_list_path(@list.id), class:"dropdown-item" do
+                    %i.far.fa-edit
                     リスト編集
                   = link_to list_path(@list.id), method: :delete, class:"dropdown-item" do
+                    %i.far.fa-trash-alt
                     リスト削除
           - if user_signed_in? && current_user.id == @list.user_id
             %ul#sortable.connectedSortable
@@ -25,6 +27,7 @@
                         = card.memo
                       .dropdown-menu
                         = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
+                          %i.far.fa-trash-alt
                           カード削除
           - else
             %ul
@@ -36,7 +39,7 @@
     .col-6
       .card.p-3.mt-3.shadow-none.bg-dark.done-box
         .card-text.d-inline-block.text-light
-          完了リスト
+          完了
           - if user_signed_in? && current_user.id == @list.user_id
             %small
               ※ここにドロップしてください
@@ -49,6 +52,7 @@
                         = card.memo
                       .dropdown-menu
                         = link_to list_card_path(list_id: @list, id: card.id), method: :delete, class:"dropdown-item" do
+                          %i.far.fa-trash-alt
                           カード削除
           - else
             %ul.done-cards

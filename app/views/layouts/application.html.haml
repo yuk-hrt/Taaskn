@@ -2,6 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no"}
     %title Taaskn
     = csrf_meta_tags
     = csp_meta_tag
@@ -13,18 +14,20 @@
     .header
       .header-title
         = link_to "/" do
-          = image_tag 'logo.png', alt: 'logo', height: '70px', width: '140px'
-      %ul.header-link
+          = image_tag 'logo.png', alt: 'logo', height: '60px', width: '120px'
+      %ul.header-link.dropdown
         - if user_signed_in?
-          %li.header-link__left
-            = link_to user_path(current_user.id) do
+          = link_to "#", class:"btn btn-dark dropdown-toggle mr-2", role:"button", id:"dropdownMenuLink", 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :"false" do
+            %i.far.fa-user
+            = current_user.name
+          %li.header-link__left.dropdown-menu
+            = link_to user_path(current_user.id), class:"dropdown-item" do
               マイページ
-          %li.header-link__left
+            = link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do
+              ログアウト
+          %li.header-link__right
             = link_to new_list_path do
               リスト追加
-          %li.header-link__right
-            = link_to destroy_user_session_path, method: :delete do
-              ログアウト
         - else
           %li.header-link__left
             = link_to new_user_registration_path do
