@@ -6,6 +6,9 @@
 自分好みのタスクを作成していいねをもらいましょう。
 ## デプロイ先
 https://taaskn.herokuapp.com/
+## ベーシック認証
+- ID: taaskn
+- pass: 0702
 ## 仕様
 - Ruby
 - Ruby on Rails
