@@ -9,6 +9,9 @@ https://taaskn.herokuapp.com/
 ## ベーシック認証
 - ID: taaskn
 - pass: 0702
+## テストアカウント
+- メールアドレス：　test@com
+- パスワード：　00000000
 ## 仕様
 - Ruby
 - Ruby on Rails
