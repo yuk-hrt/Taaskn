@@ -31,3 +31,44 @@ https://taaskn.herokuapp.com/
 - LINE BOTを用いてのタスク、カード作成
 - LINEアカウントでのログイン
 - いいねの通知(LINE)
+
+# DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false|
+|password|string|null: false|
+### Association
+- has_many :lists
+- has_many :likes
+
+## listsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|like_count|integer||
+|user_id|references|null: false|
+### Association
+- has_many :cards
+- has_many :likes
+- belongs_to :user
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|memo|string|null: false|
+|done|boolean|null: false|
+|row_order|integer||
+|list_id|references|null: false|
+### Association
+- belongs_to :list
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references||
+|list_id|references||
+### Association
+- belongs_to :list
+- belongs_to :user
